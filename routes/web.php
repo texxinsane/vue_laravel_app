@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('send', '\App\Http\Controllers\QueueController@sendMessage');
+Route::get('get', '\App\Http\Controllers\QueueController@getMessages');
