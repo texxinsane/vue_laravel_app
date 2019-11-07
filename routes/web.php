@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get('send', '\App\Http\Controllers\QueueController@sendMessage');
 Route::get('get', '\App\Http\Controllers\QueueController@getMessages');
+Route::get('getFlight', '\App\Http\Controllers\FlightController@getFlight');
+
