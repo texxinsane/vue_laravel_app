@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('send', '\App\Http\Controllers\QueueController@sendMessage');
 Route::get('get', '\App\Http\Controllers\QueueController@getMessages');
 Route::get('getFlight', '\App\Http\Controllers\FlightController@getFlight');
+Route::get('api/call', '\App\Http\Controllers\ApiController@index');
 

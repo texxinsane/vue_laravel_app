@@ -13,9 +13,9 @@ use WindowsAzure\ServiceBus\Models\BrokeredMessage;
 class QueueController extends Controller
 {
     /** @var AzureMessageBusService $busService */
-    private $busService;
+    private AzureMessageBusService $busService;
 
-    const BUS_QUEUE = 'test';
+    public const BUS_QUEUE = 'test';
 
     /**
      * QueueController constructor.

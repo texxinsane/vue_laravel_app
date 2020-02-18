@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:latest
+    container_name: vl6-web
+    ports:
+      - "81:80"
+    volumes:
+      - ./:/app
+      - ./docker/web/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    links:
+      - php
+
+  php:
+    image: php:7.3-fpm
+    container_name: vl6-php
+    ports:
+          - 9000:9000
+    volumes:
+      - ./:/app
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    container_name: vl6-elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./data/elastic:/usr/share/elasticsearch/data
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
