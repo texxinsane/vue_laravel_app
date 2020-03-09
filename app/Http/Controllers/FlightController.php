@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Services\RapidApiService;
+use App\Services\TravelPayoutsService;
 
 /**
  * Class FlightController
@@ -12,20 +13,25 @@ use App\Services\RapidApiService;
  */
 class FlightController extends Controller
 {
-
     /**
      * @var RapidApiService $apiService
      */
     private RapidApiService $apiService;
 
     /**
+     * @var TravelPayoutsService $travelPayoutService
+     */
+    private TravelPayoutsService $travelPayoutService;
+
+    /**
      * FlightController constructor.
      *
      * @param  RapidApiService  $apiService
      */
-    public function __construct(RapidApiService $apiService)
+    public function __construct(RapidApiService $apiService, TravelPayoutsService $travelPayooutService)
     {
         $this->apiService = $apiService;
+        $this->travelPayoutService = $travelPayooutService;
     }
 
     /**
@@ -33,6 +39,11 @@ class FlightController extends Controller
      */
     public function getFlight()
     {
-        return $this->apiService->getQuote();
+        return $this->apiService->getQuote2();
+    }
+
+    public function getAirports()
+    {
+        return $this->travelPayoutService->getAiroports();
     }
 }

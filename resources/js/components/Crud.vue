@@ -22,7 +22,8 @@
     export default {
         computed: {
             image() {
-                return `/images/${this.color}.png`;
+                // return `/images/${this.color}.png`;
+                return 'https://via.placeholder.com/150';
             }
         },
         methods: {

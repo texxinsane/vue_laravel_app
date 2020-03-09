@@ -1909,6 +1909,7 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Crud_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Crud.vue */ "./resources/js/components/Crud.vue");
+/* harmony import */ var _Flights_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Flights.vue */ "./resources/js/components/Flights.vue");
 //
 //
 //
@@ -1960,10 +1961,12 @@ function Crud(_ref) {
 }
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       cruds: [],
+      flights: [],
       working: false
     };
   },
@@ -2026,7 +2029,7 @@ function Crud(_ref) {
       window.axios.get('/getFlight').then(function (_ref4) {
         var data = _ref4.data;
 
-        _this5.cruds.push(new Crud(data));
+        _this5.flights.push(data);
 
         _this5.mute = false;
       });
@@ -2038,10 +2041,10 @@ function Crud(_ref) {
     }
   },
   components: {
-    CrudComponent: _Crud_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    CrudComponent: _Crud_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    FlightsComponent: _Flights_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {
-    this.read();
+  created: function created() {// this.read();
   }
 });
 
@@ -2079,7 +2082,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     image: function image() {
-      return "/images/".concat(this.color, ".png");
+      // return `/images/${this.color}.png`;
+      return 'https://via.placeholder.com/150';
     }
   },
   methods: {
@@ -2094,6 +2098,44 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     properCase: function properCase(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Flights.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Flights.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    image: function image() {// return `/images/${this.color}.png`;
+      // return 'https://via.placeholder.com/150';
+    }
+  },
+  methods: {
+    getFlights: function getFlights() {
+      this.$emit('getFlights', this.id, val.target.selectedOptions[0].value);
     }
   }
 });
@@ -20616,6 +20658,73 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Flights.vue?vue&type=template&id=1f3979e8&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Flights.vue?vue&type=template&id=1f3979e8& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flights" }, [
+      _c("div", { staticClass: "flex flex-wrap" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500"
+          },
+          [_vm._v("x")]
+        ),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-400"
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500"
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-400"
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/6 mb-4 bg-gray-500"
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass:
+            "w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/6 mb-4 bg-gray-400"
+        })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -33020,6 +33129,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Crud_vue_vue_type_template_id_2b8a6329___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Crud_vue_vue_type_template_id_2b8a6329___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Flights.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Flights.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Flights_vue_vue_type_template_id_1f3979e8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Flights.vue?vue&type=template&id=1f3979e8& */ "./resources/js/components/Flights.vue?vue&type=template&id=1f3979e8&");
+/* harmony import */ var _Flights_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Flights.vue?vue&type=script&lang=js& */ "./resources/js/components/Flights.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Flights_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Flights_vue_vue_type_template_id_1f3979e8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Flights_vue_vue_type_template_id_1f3979e8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Flights.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Flights.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Flights.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Flights_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Flights.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Flights.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Flights_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Flights.vue?vue&type=template&id=1f3979e8&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Flights.vue?vue&type=template&id=1f3979e8& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Flights_vue_vue_type_template_id_1f3979e8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Flights.vue?vue&type=template&id=1f3979e8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Flights.vue?vue&type=template&id=1f3979e8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Flights_vue_vue_type_template_id_1f3979e8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Flights_vue_vue_type_template_id_1f3979e8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

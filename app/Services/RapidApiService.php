@@ -4,6 +4,7 @@ namespace App\Services;
 
 
 use GuzzleHttp\Client;
+use http\Client\Response;
 use Illuminate\Http\JsonResponse;
 
 /**
@@ -31,12 +32,13 @@ class RapidApiService
     {
         //Request URL: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/{country}/{currency}/{locale}/{originplace}/{destinationplace}/{outboundpartialdate}
         $url
-            = 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/RO/EUR/en-US/BCN-sky/OTP-sky/2019-12-25?inboundpartialdate=2020-01-08';
+            = 'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/RO/EUR/en-US/BCN-sky/OTP-sky/2020-05-15?inboundpartialdate=2020-05-18';
 
         $options = [
             'headers' => [
-                'x-rapidapi-host' => '',
-                'x-rapidapi-key'  => ''
+                'x-rapidapi-host' => env('x_rapidapi_key'),
+                'x-rapidapi-key'  => env('rapid_api_travelpayout_x_token'),
+                'Accept-Encoding'=> 'gzip, deflate'
             ]
 
         ];
@@ -52,7 +54,7 @@ class RapidApiService
 
     public function getQuote()
     {
-        return [];
+
         $url = 'https://be.wizzair.com/9.21.0/Api/search/search/';
 
         $options = [
@@ -92,10 +94,10 @@ class RapidApiService
             $apiResult = $this->client->request('POST', $url, $options);
             $result = $apiResult->getBody()->getContents();
         } catch (\Exception $exception) {
-            $result = $exception;
+            $result['error'] = $exception->getMessage();
         }
 
-        return new JsonResponse($result);
+        return new Response($result);
     }
 
 

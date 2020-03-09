@@ -46,10 +46,13 @@
         this.name = name;
     }
     import CrudComponent from './Crud.vue';
+    import FlightsComponent from './Flights.vue';
+
     export default {
         data() {
             return {
                 cruds: [],
+                flights:[],
                 working: false
             }
         },
@@ -88,7 +91,7 @@
             getFlights() {
                 this.mute = true;
                 window.axios.get('/getFlight').then(({ data }) => {
-                    this.cruds.push(new Crud(data));
+                    this.flights.push(data);
                     this.mute = false;
                 });
             },
@@ -99,10 +102,11 @@
             }
         },
         components: {
-            CrudComponent
+            CrudComponent,
+            FlightsComponent
         },
         created() {
-            this.read();
+           // this.read();
         }
     }
 </script>

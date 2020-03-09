@@ -15,13 +15,13 @@ services:
   php:
     image: php:7.3-fpm
     container_name: vl6-php
-    ports:
-          - 9000:9000
     volumes:
       - ./:/app
+    ports:
+          - 9000:9000
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     container_name: vl6-elasticsearch
     environment:
       - cluster.name=docker-cluster
@@ -39,6 +39,7 @@ services:
   mongo:
     image: mongo
     restart: always
+    container_name: vl6-mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -46,6 +47,7 @@ services:
   mongo-express:
     image: mongo-express
     restart: always
+    container_name: vl6-mongodb-express
     ports:
       - 8081:8081
     environment:
